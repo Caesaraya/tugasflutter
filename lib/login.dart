@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_pertama_flutter/home.dart';
 import 'package:project_pertama_flutter/register.dart';
+import 'widget/textfield.dart';
+import 'widget/button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,12 +12,19 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final TextEditingController Username = TextEditingController();
+  final TextEditingController Password = TextEditingController();
+
+  void _register() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const Register()),
+    );
+  }
 
   void _login() {
-    final username = _usernameController.text;
-    final password = _passwordController.text;
+    final username = Username.text;
+    final password = Password.text;
 
     if (username.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -47,8 +56,8 @@ class _LoginPageState extends State<LoginPage> {
           duration: Duration(seconds: 1),
         ),
       );
-      _passwordController.clear();
-      _usernameController.clear();
+      Password.clear();
+      Username.clear();
     }
   }
 
@@ -71,62 +80,30 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(height: 20),
-            TextField(
-              controller: _usernameController,
-              decoration: InputDecoration(
-                labelText: "Username",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(40),
-                ),
-              ),
-            ),
+            Textfield(hint: "Username", controller: Username),
             SizedBox(height: 20),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: "Password",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(40),
-                ),
-              ),
-            ),
+            Textfield(hint: "Password", controller: Password, isPassword: true),
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  child: ElevatedButton(
-                    onPressed: _login,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blueAccent,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                    child: const Text('Login'),
+                  child: CustomButton(
+                    color: Colors.blueAccent,
+                    press: _login,
+                    textt: "login",
+                    textColor: Colors.white,
                   ),
                 ),
                 const SizedBox(width: 10),
                 const Text("atau"),
                 const SizedBox(width: 10),
                 Container(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Register()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blueAccent[400],
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                    child: const Text('Register'),
+                  child: CustomButton(
+                    color: Colors.blueAccent,
+                    press: _register,
+                    textt: "Register",
+                    textColor: Colors.white,
                   ),
                 ),
               ],

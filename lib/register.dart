@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_pertama_flutter/home.dart';
 import 'widget/textfield.dart';
 import 'widget/gender.dart';
+import 'widget/button.dart';
 import 'package:intl/intl.dart';
 
 class Register extends StatefulWidget {
@@ -118,16 +119,11 @@ class _RegisterState extends State<Register> {
 
             SizedBox(height: 20),
 
-            ElevatedButton(
-              onPressed: _register,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blueAccent,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              child: const Text("Register", style: TextStyle(fontSize: 18)),
+            CustomButton(
+              textColor: Colors.white,
+              textt: "Register",
+              press: _register,
+              color: Colors.blueAccent,
             ),
           ],
         ),

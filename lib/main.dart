@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:project_pertama_flutter/pages/calculator_page.dart';
+// import 'package:project_pertama_flutter/pages/calculator_page.dart';
+import 'package:project_pertama_flutter/routes/pages.dart';
+import 'package:project_pertama_flutter/routes/routes.dart';
 // import 'package:project_pertama_flutter/login.dart';
 
 void main() {
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: CalculatorPage(hasil: ''),
+      initialRoute: AppRoutes.calculator,
+      getPages: AppPages.pages,
     );
   }
 }

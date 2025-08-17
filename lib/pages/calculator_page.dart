@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_pertama_flutter/routes/routes.dart';
 import 'package:project_pertama_flutter/widget/button.dart';
 import 'package:project_pertama_flutter/widget/textfield.dart';
 import 'package:project_pertama_flutter/controllers/calculator_controller.dart';
@@ -78,6 +79,14 @@ class CalculatorPage extends StatelessWidget {
               textt: "Clear",
               press: calculatorController.clear,
               color: Colors.blueAccent,
+            ),
+            CustomButton(
+              textColor: Colors.white,
+              textt: 'move to football',
+              color: Colors.lightGreen,
+              press: () {
+                Get.toNamed(AppRoutes.footballplayers);
+              },
             ),
           ],
         ),

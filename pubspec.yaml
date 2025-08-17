@@ -63,6 +63,9 @@ flutter:
   assets:
     - asset/rus.png
     - asset/math.png
+    - asset/doku.jpg
+    - asset/halan.jpg
+    - asset/foden.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

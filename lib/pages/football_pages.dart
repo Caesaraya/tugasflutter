@@ -19,8 +19,7 @@ class FootballPages extends StatelessWidget {
             itemBuilder: (context, index) {
               final player = footballController.players[index];
               return Card(
-                elevation: 3,
-                margin: const EdgeInsets.symmetric(vertical: 8),
+                margin: EdgeInsets.symmetric(vertical: 8),
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(10),
                   leading: ClipOval(
@@ -33,10 +32,7 @@ class FootballPages extends StatelessWidget {
                   ),
                   title: Text(
                     player.name,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   subtitle: Text(
                     '${player.position} - #${player.number}',

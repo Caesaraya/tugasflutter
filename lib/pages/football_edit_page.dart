@@ -23,7 +23,7 @@ class FootballEditPage extends StatelessWidget {
     numberController.text = player.number.toString();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Edit Player')),
+      appBar: AppBar(title: Text('Edit Player')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(

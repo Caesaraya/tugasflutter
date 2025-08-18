@@ -22,9 +22,9 @@ class FootballEditPage extends StatelessWidget {
     numberController.text = player.number.toString();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Edit Player')),
+      appBar: AppBar(title: Text('Edit Player')),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
             Textfield(hint: 'name', controller: nameController),

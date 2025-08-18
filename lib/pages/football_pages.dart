@@ -39,7 +39,7 @@ class FootballPages extends StatelessWidget {
                     ),
                   ),
                   subtitle: Text(
-                    '${player.position} • #${player.number}',
+                    '${player.position} - #${player.number}',
                     style: TextStyle(color: Colors.grey[700]),
                   ),
                   onTap: () {

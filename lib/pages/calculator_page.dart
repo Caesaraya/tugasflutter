@@ -18,6 +18,7 @@ class CalculatorPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Calculator")),
       body: Container(
+        margin: EdgeInsets.all(20),
         child: Column(
           children: [
             Textfield(

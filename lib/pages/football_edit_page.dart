@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_pertama_flutter/controllers/football_controller.dart';
+import 'package:project_pertama_flutter/widget/button.dart';
+import 'package:project_pertama_flutter/widget/textfield.dart';
 
 class FootballEditPage extends StatelessWidget {
   FootballEditPage({super.key});
@@ -13,15 +15,12 @@ class FootballEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Ambil index player dari arguments
     final int playerIndex = Get.arguments;
     final player = footballController.players[playerIndex];
 
-    // Isi form dengan data lama
     nameController.text = player.name;
     positionController.text = player.position;
     numberController.text = player.number.toString();
-    imageUrlController.text = player.profileImage;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Edit Player')),
@@ -29,45 +28,27 @@ class FootballEditPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: NetworkImage(imageUrlController.text),
-            ),
-            const SizedBox(height: 10),
-
-            TextField(
-              controller: imageUrlController,
-              decoration: const InputDecoration(labelText: 'Image URL'),
-              onChanged: (value) {},
-            ),
-
-            const SizedBox(height: 20),
-            TextField(
-              controller: nameController,
-              decoration: const InputDecoration(labelText: 'Name'),
-            ),
-            TextField(
-              controller: positionController,
-              decoration: const InputDecoration(labelText: 'Position'),
-            ),
+            SizedBox(height: 20),
+            Textfield(hint: 'name', controller: nameController),
+            Textfield(hint: 'position', controller: positionController),
             TextField(
               controller: numberController,
-              decoration: const InputDecoration(labelText: 'Number'),
+              decoration: InputDecoration(hintText: 'Number'),
               keyboardType: TextInputType.number,
             ),
-            const SizedBox(height: 20),
-
-            ElevatedButton(
-              onPressed: () {
+            SizedBox(height: 20),
+            CustomButton(
+              textColor: Colors.white,
+              textt: 'Save',
+              color: Colors.purple,
+              press: () {
                 footballController.players[playerIndex] = player.copyWith(
-                  profileImage: imageUrlController.text,
                   name: nameController.text,
                   position: positionController.text,
                   number: int.tryParse(numberController.text) ?? player.number,
                 );
                 Get.back();
               },
-              child: const Text('Save Changes'),
             ),
           ],
         ),

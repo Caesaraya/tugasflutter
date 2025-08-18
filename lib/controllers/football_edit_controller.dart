@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_pertama_flutter/controllers/football_controller.dart';
+import 'package:project_pertama_flutter/widget/textfield.dart';
+import 'package:project_pertama_flutter/widget/button.dart';
 
 class FootballEditPage extends StatelessWidget {
   FootballEditPage({super.key});
@@ -25,27 +27,19 @@ class FootballEditPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            CircleAvatar(
-              radius: 40,
-              backgroundImage: NetworkImage(player.profileImage),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: nameController,
-              decoration: const InputDecoration(labelText: 'Name'),
-            ),
-            TextField(
-              controller: positionController,
-              decoration: const InputDecoration(labelText: 'Position'),
-            ),
+            Textfield(hint: 'name', controller: nameController),
+            Textfield(hint: 'position', controller: positionController),
             TextField(
               controller: numberController,
-              decoration: const InputDecoration(labelText: 'Number'),
+              decoration: InputDecoration(hintText: 'Number'),
               keyboardType: TextInputType.number,
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
+            SizedBox(height: 20),
+            CustomButton(
+              textColor: Colors.purple,
+              textt: 'Save',
+              color: Colors.white,
+              press: () {
                 footballController.players[playerIndex] = player.copyWith(
                   name: nameController.text,
                   position: positionController.text,
@@ -53,7 +47,6 @@ class FootballEditPage extends StatelessWidget {
                 );
                 Get.back();
               },
-              child: const Text('Save'),
             ),
           ],
         ),

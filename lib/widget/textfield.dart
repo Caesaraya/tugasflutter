@@ -15,14 +15,10 @@ class Textfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
       child: TextField(
         controller: controller,
         obscureText: isPassword,
-        decoration: InputDecoration(
-          hintText: hint,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-        ),
+        decoration: InputDecoration(hintText: hint),
       ),
     );
   }

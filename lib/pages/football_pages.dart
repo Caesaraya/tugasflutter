@@ -25,8 +25,8 @@ class FootballPages extends StatelessWidget {
                   contentPadding: const EdgeInsets.all(10),
                   leading: ClipOval(
                     child: Image.asset(
-                      player.profileImage, // bisa diganti NetworkImage
-                      fit: BoxFit.cover, // crop tengah
+                      player.profileImage,
+                      fit: BoxFit.cover,
                       width: 50,
                       height: 50,
                     ),

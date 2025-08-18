@@ -29,21 +29,16 @@ class FootballEditPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Preview gambar dari URL
             CircleAvatar(
               radius: 50,
               backgroundImage: NetworkImage(imageUrlController.text),
             ),
             const SizedBox(height: 10),
 
-            // TextField URL Gambar
             TextField(
               controller: imageUrlController,
               decoration: const InputDecoration(labelText: 'Image URL'),
-              onChanged: (value) {
-                // Update preview ketika mengetik URL baru
-                // Pakai setState kalau StatefulWidget, atau biarkan preview update setelah save
-              },
+              onChanged: (value) {},
             ),
 
             const SizedBox(height: 20),
@@ -70,7 +65,7 @@ class FootballEditPage extends StatelessWidget {
                   position: positionController.text,
                   number: int.tryParse(numberController.text) ?? player.number,
                 );
-                Get.back(); // kembali ke list page
+                Get.back();
               },
               child: const Text('Save Changes'),
             ),

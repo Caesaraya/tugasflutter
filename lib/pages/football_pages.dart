@@ -19,7 +19,7 @@ class FootballPages extends StatelessWidget {
             itemBuilder: (context, index) {
               final player = footballController.players[index];
               return Card(
-                margin: EdgeInsets.symmetric(vertical: 8),
+                margin: const EdgeInsets.symmetric(vertical: 8),
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(10),
                   leading: ClipOval(
@@ -32,7 +32,10 @@ class FootballPages extends StatelessWidget {
                   ),
                   title: Text(
                     player.name,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
                   ),
                   subtitle: Text(
                     '${player.position} - #${player.number}',
@@ -56,6 +59,30 @@ class FootballPages extends StatelessWidget {
             },
           ),
         ),
+      ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1,
+        onTap: (index) {
+          if (index == 0) {
+            Get.offAllNamed(AppRoutes.calculator);
+          } else if (index == 1) {
+            Get.offAllNamed(AppRoutes.footballplayers);
+          } else if (index == 2) {
+            Get.offAllNamed(AppRoutes.profile);
+          }
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calculate),
+            label: "Calculator",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sports_soccer),
+            label: "Football",
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+        ],
       ),
     );
   }

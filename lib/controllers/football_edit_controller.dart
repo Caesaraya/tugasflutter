@@ -1,56 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_pertama_flutter/controllers/football_controller.dart';
-import 'package:project_pertama_flutter/widget/textfield.dart';
-import 'package:project_pertama_flutter/widget/button.dart';
 
-class FootballEditPage extends StatelessWidget {
-  FootballEditPage({super.key});
+class FootballEditController extends GetxController {
+  final nameController = TextEditingController();
+  final positionController = TextEditingController();
+  final numberController = TextEditingController();
+  final imageUrlController = TextEditingController();
 
-  final FootballController footballController = Get.find();
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController positionController = TextEditingController();
-  final TextEditingController numberController = TextEditingController();
+  late int playerIndex;
+  late Player player;
+
+  final footballController = Get.find<FootballController>();
 
   @override
-  Widget build(BuildContext context) {
-    final int playerIndex = Get.arguments;
-    final player = footballController.players[playerIndex];
+  void onInit() {
+    super.onInit();
+    playerIndex = Get.arguments as int;
+    player = footballController.players[playerIndex];
 
     nameController.text = player.name;
     positionController.text = player.position;
     numberController.text = player.number.toString();
+    imageUrlController.text = player.profileImage;
+  }
 
-    return Scaffold(
-      appBar: AppBar(title: Text('Edit Player')),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Textfield(hint: 'name', controller: nameController),
-            Textfield(hint: 'position', controller: positionController),
-            TextField(
-              controller: numberController,
-              decoration: InputDecoration(hintText: 'Number'),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 20),
-            CustomButton(
-              textColor: Colors.purple,
-              textt: 'Save',
-              color: Colors.white,
-              press: () {
-                footballController.players[playerIndex] = player.copyWith(
-                  name: nameController.text,
-                  position: positionController.text,
-                  number: int.tryParse(numberController.text) ?? player.number,
-                );
-                Get.back();
-              },
-            ),
-          ],
-        ),
-      ),
+  void saveChanges() {
+    footballController.players[playerIndex] = player.copyWith(
+      name: nameController.text,
+      position: positionController.text,
+      number: int.tryParse(numberController.text) ?? player.number,
+      profileImage: imageUrlController.text,
     );
+    Get.back();
+  }
+
+  @override
+  void onClose() {
+    nameController.dispose();
+    positionController.dispose();
+    numberController.dispose();
+    imageUrlController.dispose();
+    super.onClose();
   }
 }

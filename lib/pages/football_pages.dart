@@ -60,30 +60,6 @@ class FootballPages extends StatelessWidget {
           ),
         ),
       ),
-
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1,
-        onTap: (index) {
-          if (index == 0) {
-            Get.offAllNamed(AppRoutes.calculator);
-          } else if (index == 1) {
-            Get.offAllNamed(AppRoutes.footballplayers);
-          } else if (index == 2) {
-            Get.offAllNamed(AppRoutes.profile);
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calculate),
-            label: "Calculator",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.sports_soccer),
-            label: "Football",
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-        ],
-      ),
     );
   }
 }

@@ -4,4 +4,5 @@ class AppRoutes {
   static const footballeditplayers = "/footballeditplayers";
   static const profile = "/profile";
   static const mainmenu = "/mainmenu";
+  static const maindraw = "/maindraw";
 }
